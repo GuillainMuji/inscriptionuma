@@ -1,0 +1,385 @@
+<DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Pré-inscription</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>UNIVERSITE DE  MANONO</h1>
+            <img src="https://th.bing.com/th/id/R.26d1f8eaea48615e154161622df9de9b?rik=5Mfz36h784ldcA&pid=ImgRaw&r=0"  alt="Logo Université" class="logo">
+            <h2>UMA</h2>
+            <h3>FORMULAIRE DE DEMANDE D'INSCRIPTION</h3>
+            <h4>ANNEE ACADEMIQUE 2024-2025</h4>
+            <hr class="separator">
+        </header>
+        <div class="progress-bar">
+            <div class="step active">
+                <span>1</span>
+                <p>Identités complètes du candidat</p>
+            </div>
+            <div class="step">
+                <span>2</span>
+                <p>Choix de la Faculté (Filière)</p>
+            </div>
+            <div class="step">
+                <span>3</span>
+                <p>Téléchargement</p>
+            </div>
+            
+        </div>
+
+        <section class="form-section">
+            <h3>Formulaire de pré-inscription</h3>
+            <p>Veuillez compléter tous les champs obligatoires (*)
+            </p>
+            <hr class="separator">
+            <form id="multi-step-form" method="post" enctype="multipart/form-data">
+            <!--<form action="#" method="POST" enctype="multipart/form-data">-->
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+            <div class="alert">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    <!-- Première ligne -->
+    <div class="form-row">
+        <div class="form-group">
+            
+            {{ form.province_educationnelle.label_tag }}
+            {{ form.province_educationnelle }}
+        </div>
+        <div class="form-group">
+            {{ form.ecole.label_tag }}
+            {{ form.ecole }}
+        </div>
+    </div>
+
+    <!-- Deuxième ligne -->
+    <div class="form-row">
+        <div class="form-group">
+            {{ form.nom.label_tag }}
+            {{ form.nom }}
+        </div>
+        <div class="form-group">
+            {{ form.post_nom.label_tag }}
+            {{ form.post_nom }}
+        </div>
+        <div class="form-group">
+            {{ form.prenom.label_tag }}
+            {{ form.prenom }}
+        </div>
+    </div>
+
+    <!-- Troisième ligne -->
+    <div class="form-row">
+        <div class="form-group">
+            {{ form.sexe.label_tag }}
+            {{ form.sexe }}
+        </div>
+        <div class="form-group">
+            {{ form.etat_civil.label_tag }}
+            {{ form.etat_civil }}
+        </div>
+        <div class="form-group">
+            {{ form.pourcentage.label_tag }}
+            {{ form.pourcentage }}
+        </div>
+    </div>
+
+    <!-- Quatrième ligne -->
+    <div class="form-row">
+        <div class="form-group">
+            {{ form.lieu_naissance.label_tag }}
+            {{ form.lieu_naissance }}
+        </div>
+        <div class="form-group">
+            {{ form.date_naissance.label_tag }}
+            {{ form.date_naissance }}
+        </div>
+        <div class="form-group">
+            {{ form.nationalite.label_tag }}
+            {{ form.nationalite }}
+        </div>
+    </div>
+
+    <!-- Cinquième ligne -->
+    <div class="form-row">
+        <div class="form-group">
+            {{ form.province_origine.label_tag }}
+            {{ form.province_origine }}
+        </div>
+        <div class="form-group">
+            {{ form.territoire_district.label_tag }}
+            {{ form.territoire_district }}
+        </div>
+        <div class="form-group">
+            {{ form.secteur.label_tag }}
+            {{ form.secteur }}
+        </div>
+    </div>
+
+    <!-- Sixième ligne -->
+    <div class="form-row">
+
+        <div class="form-group">
+            {{ form.annee_obtention_diplome.label_tag }}
+            {{ form.annee_obtention_diplome }}
+        </div>
+
+        <div class="form-group">
+            {{ form.adresse_mail.label_tag }}
+            {{ form.adresse_mail }}
+        </div>
+        <div class="form-group">
+            {{ form.telephone.label_tag }}
+            {{ form.telephone }}
+        </div>
+        
+        
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            {{ form.adresse_complet.label_tag }}
+            {{ form.adresse_complet }}
+        </div>
+    </div>
+    <button type="submit">Page Suivante</button>
+</form>
+
+        </section>
+
+    </div>
+</body>
+<style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+header h1, h2, h3, h4 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 17px;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+header h2 {
+    font-size: 20px;
+    color: red;
+}
+
+header h3 {
+    font-size: 30px;
+    color: #333;
+}
+
+header h4 {
+    font-size: 16px;
+    color: red;
+}
+.separator {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.progress-bar .step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.progress-bar .step span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    line-height: 30px;
+    color: #333;
+}
+
+.progress-bar .step.active span {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.progress-bar .step p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.progress-bar .step::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background-color: #e0e0e0;
+    z-index: -1;
+}
+
+.progress-bar .step.active::after {
+    background-color: #007bff;
+}
+
+.progress-bar .step:last-child::after {
+    display: none;
+}
+.form-section {
+    margin-top: 20px;
+}
+
+
+.form-section h3 {
+    font-size: 20px;
+    color: blue;
+    margin-bottom: 10px;
+}
+
+.form-section p {
+    margin-bottom: 20px;
+}
+
+/* Style pour les lignes du formulaire */
+.form-row {
+    display: flex;
+    justify-content: space-between; /* Espace entre les éléments */
+    margin-bottom: 20px; /* Espace entre les lignes */
+}
+
+/* Style pour les groupes de champs de formulaire */
+.form-group {
+    flex: 1; /* Prend toute la largeur disponible */
+    margin-right: 20px; /* Espacement entre les champs */
+}
+
+
+/* Le dernier champ de la ligne n'a pas de marge droite */
+.form-group:last-child {
+    margin-right: 0;
+}
+
+/* Style pour les champs input */
+input[type="text"]{
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+input[type="date"]{
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+input{
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+
+
+select{
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+label::after{
+        content: "*";
+        color: red;
+}
+
+.alert {
+    color: red;
+    font-size: 17px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+button {
+    display: block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: auto; /* Aligne le bouton à droite */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.form-group textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 3px rgba(38, 143, 255, 0.5);
+}
+
+</style>
+</html>
